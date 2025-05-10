@@ -1,0 +1,157 @@
+body {
+    background-color: rgb(242, 237, 237);
+}
+
+.gastronimia-hero {
+    margin: 0;
+    padding: 0;
+    width: 100%; 
+    min-height: 100vh; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+    background: url('https://xpot.sv/wp-content/uploads/2025/01/Estrella-Michelin-min.jpg') no-repeat; 
+    background-size: cover;
+}
+
+.tele {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.718);
+    background-color: #000000b7;
+    width: 500PX;
+    height: 200PX;
+    border-radius: 8PX;
+    padding: 20PX;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mu {
+    color: #fff;
+    font-size: 40px;
+}
+
+.m {
+    color: #fff;
+    font-size: 25px;
+}
+
+.tele:hover {
+    transform: translateY(-10px);
+}
+
+.exp-container {
+    padding: 70px ;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.title-section {
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: #000;
+    position: relative;
+}
+
+.title-section::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: #c4a747;
+}
+
+.exp-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 -15px;
+}
+
+.exp-card {
+    width: 400px; /* Ancho fijo */
+    height: 465px; /* Altura fija */
+    margin: 15px;
+    background-color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.exp-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.exp-card-image {
+    width: 400px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.exp-card-content {
+    padding: 20px;
+}
+
+.exp-card-title {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #0c2340;
+    font-family: 'Courgette', cursive;
+}
+
+.exp-card-text {
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+
+/* Sección Membresía */
+#premium {
+    background-color: #0c2340;
+    color: #fff;
+    padding: 60px 0;
+}
+
+.membresia-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.title-section {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 40px;
+    position: relative;
+    font-family: 'Courgette', cursive;
+}
+
+.title-section::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: #c4a747;
+}
+
+.gop {
+    background-color: #0c2340;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 15px 60px;
+    font-family: 'Courgette', cursive;
+}
+
+.gop:hover {
+    background-color: #02142a;
+}

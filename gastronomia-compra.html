@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input[type="text"],
+        input[type="tel"],
+        select {
+            width: 96%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4ecdc4;
+        }
+        
+        h2 {
+            color: #4ecdc4;
+            border-bottom: 2px solid #4ecdc4;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        
+        .btn-submit {
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            width: 200px;
+        }
+        
+        .btn-submit:hover {
+            background-color: #ff5252;
+        }
+        
+        .info-precio {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <div class="container">
+            <h1>Formulario de Comida</h1>
+            <form>
+                <h2>Datos de entrega</h2>
+                
+                <div class="form-group">
+                    <label for="direccion">Dirección:</label>
+                    <input type="text" id="direccion" name="direccion" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="telefono">Teléfono:</label>
+                    <input type="tel" id="telefono" name="telefono" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefono">Nombre completo:</label>
+                    <input type="tel" id="telefono" name="telefono" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="comida">Selección de comida:</label>
+                    <select id="comida" name="comida" required onchange="actualizarPrecio()">
+                        <option value="Carne halal" data-precio="$250.000">Carne halal</option>
+                        <option value="Sushi" data-precio="$60.000">Sushi</option>
+                        <option value="Bandeja paisa" data-precio="$70.000">Bandeja paisa</option>
+                        <option value="Arroz chino" data-precio="$60.000">Arroz chino</option>
+                        <option value="Caviar" data-precio="$120.000">Caviar</option>
+                        <option value="Postres" data-precio="$40.000">Postres</option>
+                        <option value="Pulpo" data-precio="$70.000">Pulpo</option>
+                        <option value="Langosta" data-precio="$150.000">Langosta</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="precio">Precio:</label>
+                    <input type="text" id="precio" readonly value="$250.000" class="form-control">
+                </div>
+                
+                <script>
+                    function actualizarPrecio () {
+                        var select = document.getElementById("comida")
+                        var precio = select.options[select.selectedIndex].getAttribute("data-precio");
+                        document.getElementById("precio").value = precio;
+                    }
+                </script>
+
+                <h2>Datos de pago</h2>
+                
+                <div class="form-group">
+                    <label for="tarjeta">Número de tarjeta:</label>
+                    <input type="text" id="tarjeta" name="tarjeta" required>
+                </div>
+                
+                <button type="submit" class="btn-submit">Realizar pedido</button>
+            </form>
+        </div>
+    </form>
+</body>
+</html>

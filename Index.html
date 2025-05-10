@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viaja seguro</title>
+    <link rel="stylesheet" href="navbar principal.css">
+    <link rel="stylesheet" href="hero.css">
+    <link rel="stylesheet" href="Inicio.css">
+    <link rel="stylesheet" href="Banner.css">
+    <link rel="stylesheet" href="Articulos.css">
+    <link rel="stylesheet" href="Slider.css">
+    <link rel="stylesheet" href="Salidas.css">
+    <link rel="stylesheet" href="Tours.css">
+    <link rel="stylesheet" href="contacto.css">
+    <link rel="stylesheet" href="chat.css">
+    <script src="https://kit.fontawesome.com/4243cdd291.js" crossorigin="anonymous"></script>
+    <link rel="Icon" href="imagenes/logoo.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+</head>
+<body style="background-color: rgb(0, 0, 0);">
+    <nav>
+        <div class="navbar">
+            <a href="#inicios">  
+                <img class="Logotipo" src="imagenes/Logo.png" alt="Logo">  
+            </a>
+            <div>
+                <h1 class="logo">Viajes Gustov</h1>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li>  
+                        <a href="#inicios">  
+                            <i class="fa-solid fa-house-chimney"></i>Inicio  
+                        </a>  
+                    </li> 
+                    <li>  
+                        <a href="#inicio">  
+                            <i class="fa-solid fa-circle-user"></i>Sobre nosotros  
+                        </a>  
+                    </li> 
+                    <li>
+                        <a href="#articulos">
+                            <i class="fa-solid fa-plus"></i>Articulos
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#Servicios">
+                            <i class="fa-solid fa-truck-fast"></i>Servicios
+                        </a>
+                    </li>
+                    <li>  
+                        <a href="Ubicacion.html">
+                            <i class="fa-solid fa-location-dot"></i>Ubicacion
+                        </a>  
+                    </li>  
+                    <li>
+                        <a href="#contacto">
+                            <i class="fa-sharp fa-solid fa-phone"></i>Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Chatbot -->
+    <button class="chat-toggle-btn" onclick="toggleChat()">💬</button>
+    <div class="chat-container" id="chat">
+        <div class="chat-header" onclick="toggleChat()">ChatBot ✖</div>
+        <div class="chat-box" id="chat-box">
+            <div class="bot-message">¡Hola! ¿En qué puedo ayudarte?</div>
+        </div>
+        <div class="chat-input-container">
+            <input type="text" id="user-input" placeholder="Escribe un mensaje...">
+            <button onclick="sendMessage()">Enviar</button>
+        </div>
+    </div>
+
+    <section id="inicios" class="hero"> 
+            <div>  
+                <h1 class="Dos">La Aventura Te Espera</h1>  
+                <p class="uno">¡Descubre lugares increíbles que te dejarán asombrado!</p>  
+                <a href="Salidas.html" class="btn">Ver mas</a>  
+            </div>  
+            <div class="slider">
+                <div class="slides">
+                    <div class="slide">
+                        <img src="https://sergioariasfotografia.es/blog/wp-content/uploads/2023/01/viajes-fotograficos-sergio-arias.jpg">
+                    </div>
+                    <div class="slide">
+                        <img src="https://static.vecteezy.com/system/resources/thumbnails/033/837/313/small_2x/hut-in-the-forest-on-the-river-bank-travel-background-ai-generative-photo.jpeg">
+                    </div>
+                    <div class="slide">
+                        <img src="https://imagenes.eltiempo.com/files/image_1200_535/uploads/2021/02/01/601874e70a86f.jpeg">
+                    </div>
+                    <div class="slide">
+                        <img src="https://a.travel-assets.com/findyours-php/viewfinder/images/res70/52000/52309-Seville.jpg">
+                    </div>
+                    <div class="slide">
+                        <img src="https://www.aseguratuviaje.cl/images/jch-optimize/ng/images_Consejos-para-brasil.webp">
+                    </div>
+                    <div class="slide">
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/27/aa/b1/79/caption.jpg?w=1200&h=-1&s=1">
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <section id="inicio" style="padding: 90px;">
+        <h1 class="titulo2">
+            Sobre Nosotros
+        </h1>
+
+        <div class="Contenedor">
+            <div class="tarjetas">
+                <div class="tarjetas-sub">
+                    <h2>
+                        Misión
+                    </h2>
+                </div>
+
+                <div class="Contenedor-two">
+                    <p>
+                        En viajes gustov, <b>nos dedicamos a crear experiencias de viaje memorables</b> que conecten a las personas con el mundo y entre sí. <b>Nuestro objetivo es ofrecer aventuras únicas y personalizadas</b>, fomentando un turismo responsable y sostenible que respete las culturas locales y el medio ambiente. Creemos que viajar enriquece la vida, y <b>nos comprometemos a hacer que cada viaje sea accesible, auténtico y transformador para todos nuestros clientes.</b>
+                    </p>
+                </div>
+            </div>
+
+            <div class="tarjetas">
+                <div class="tarjetas-sub">
+                    <h2>
+                        Visión 
+                    </h2>
+                </div>
+
+                <div class="Contenedor-two">
+                    <p>
+                        Ser la agencia de <b>viajes líder en experiencias de aventura únicas y sostenibles</b>, reconocida por nuestra excelencia en atención al cliente y por promover un turismo que respete la diversidad cultural y el medio ambiente. Aspiramos a inspirar a las personas a descubrir el mundo con curiosidad y respeto, <b>creando una comunidad global de viajeros conscientes y comprometidos.</b>
+                    </p>
+                </div>
+            </div>
+
+            <div class="tarjetas">
+                <div class="tarjetas-sub">
+                    <h2>
+                        Valores
+                    </h2>
+                </div>
+
+                <div class="Contenedor-two">
+                    <p>
+                        Nuestra empresa <b>se centra en la satisfacción del cliente</b>, ofreciendo experiencias memorables. Promovemos la sostenibilidad mediante prácticas responsables con el medio ambiente. <b>Valoramos el respeto y la diversidad, honrando diferentes culturas.</b> Actuamos con integridad, siendo transparentes y honestos. <b>Fomentamos la innovación para mejorar nuestros servicios y colaboramos con socios estratégicos.</b> Nos comprometemos a ofrecer <b>calidad en todos nuestros productos e inspirar a nuestros clientes a vivir la aventura a través de sus viajes.</b>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="articulos" style="padding: 90px;">
+        <h1 class="texto">Articulos</h1>
+        <p class="textos">Esperamos que ames nuestros articulos</p>
+
+        <div class="container">
+            <a class="salidas" href="Tours.html">  
+                <div class="cards">
+                    <div class="cards-header">
+                        <img class="imagenes" src="imagenes/Tours.png">
+                        <h2 style="cursor: pointer" class="titulo" onclick="openArticle()">
+                            Destinos nacionales
+                        </h2>
+                        <p class="cards-content">
+                            El marketing desempeña un papel fundamental en la promoción y desarrollo del turismo, ya que permite posicionar destinos, servicios y…
+                        </p>
+                    </div>
+                </div>
+            </a>
+
+            <a class="salidas" href="Planes.html">
+                <div class="cards">
+                    <div class="cards-header">
+                        <img class="imagenes" src="imagenes/Alojamiento.png">
+                        <h2 style="cursor: pointer" class="titulo" onclick="openArticle()">
+                            Hospedaje
+                        </h2>
+                        <p class="cards-content">
+                            El marketing desempeña un papel fundamental en la promoción y desarrollo del turismo, ya que permite posicionar destinos, servicios y…
+                        </p>
+                    </div>
+                </div>
+            </a>
+
+            <a class="salidas" href="Salidas.html">  
+                <div class="cards">  
+                    <div class="cards-header">  
+                        <img class="imagenes" src="imagenes/Salidas.png">  
+                        <h2 style="cursor: pointer" class="titulo" onclick="openArticle()">  
+                            Paquetes  
+                        </h2>   
+                        <p class="cards-content">  
+                            El marketing desempeña un papel fundamental en la promoción y desarrollo del turismo, ya que permite posicionar destinos, servicios y…  
+                        </p>  
+                    </div>  
+                </div>  
+            </a>  
+
+            <a class="salidas" href="Excursiones.html">
+                <div class="cards">
+                    <div class="cards-header">
+                        <img class="imagenes" src="imagenes/Excursiones.png">
+                        <h2 style="cursor: pointer" class="titulo" onclick="openArticle()">
+                            Excursiones
+                        </h2>
+                        <p class="cards-content">
+                            El marketing desempeña un papel fundamental en la promoción y desarrollo del turismo, ya que permite posicionar destinos, servicios y…
+                        </p>
+                    </div>
+                </div>
+            </a>
+
+            <a class="salidas" href="Noches.html">
+                <div class="cards">
+                    <div class="cards-header">
+                        <img class="imagenes" src="imagenes/Romantico.png">
+                        <h2 style="cursor: pointer" class="titulo" onclick="openArticle()">
+                            Vuelos en pareja
+                        </h2>
+                        <p class="cards-content">
+                            El marketing desempeña un papel fundamental en la promoción y desarrollo del turismo, ya que permite posicionar destinos, servicios y…
+                        </p>
+                    </div>
+                </div>
+            </a>
+
+            <a class="salidas" href="Coopetencia.html">
+                <div class="cards">
+                    <div class="cards-header">
+                        <img class="imagenes" src="imagenes/Competencia.png">
+                        <h2 style="cursor: pointer" class="titulo" onclick="openArticle()">
+                            Coopetencia turística
+                        </h2>
+                        <p class="cards-content">
+                            El marketing desempeña un papel fundamental en la promoción y desarrollo del turismo, ya que permite posicionar destinos, servicios y…
+                        </p>
+                    </div>
+                </div>
+            </a>
+
+            <a class="salidas" href="Eventos.html">
+                <div class="cards">
+                    <div class="cards-header">
+                        <img class="imagenes" src="imagenes/Eventos.png">
+                        <h2 style="cursor: pointer" class="titulo" onclick="openArticle()">
+                            Viajes corporativos
+                        </h2>
+                        <p class="cards-content">
+                            El marketing desempeña un papel fundamental en la promoción y desarrollo del turismo, ya que permite posicionar destinos, servicios y…
+                        </p>
+                    </div>
+                </div>
+            </a>
+
+            <a class="salidas" href="Carros.html">
+                <div class="cards">
+                    <div class="cards-header">
+                        <img class="imagenes" src="imagenes/Carros.png">
+                        <h2 style="cursor: pointer" class="titulo" onclick="openArticle()">
+                            Alquiler de autos
+                        </h2>
+                        <p class="cards-content">
+                            El marketing desempeña un papel fundamental en la promoción y desarrollo del turismo, ya que permite posicionar destinos, servicios y…
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section id="contacto" class="contact-section">
+        <div class="section-title">
+            <h2>Contáctanos</h2>
+            <p>Estamos aquí para ayudarte, no dudes en ponerte en contacto</p>
+        </div>
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3 class="info-title">Información de Contacto</h3>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="info-details">
+                        <h5>Ubicación</h5>
+                        <p>Av. Principal #123, Ciudad</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="info-details">
+                        <h5>Teléfono</h5>
+                        <p>+57 123 499 79 81</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="info-details">
+                        <h5>Email</h5>
+                        <p>laura.dimas1205@gmail.com</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="info-details">
+                        <h5>Horario</h5>
+                        <p> De lunes a Viernes desde las 9AM hasta las 6PM</p>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://wa.me/qr/WSYP5RPGA3TAL1"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.facebook.com/share/1NGRbVyCU6/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/laupet_07?igsh=YzljYTk1ODg3Zg=="><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/in/laura-valentina-dimas-4b0245278?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3 class="form-title">Envíanos un Mensaje</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nombre Completo</label>
+                        <input type="text" id="name" class="form-control" placeholder="Tu nombre" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" id="email" class="form-control" placeholder="tucorreo@ejemplo.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Asunto</label>
+                        <input type="text" id="subject" class="form-control" placeholder="Asunto de tu mensaje" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Mensaje</label>
+                        <textarea id="message" class="form-control" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                    </div>
+                    
+                    <!-- From Uiverse.io by adamgiebl --> 
+                    <button>
+                        <svg
+                        height="24"
+                        width="24"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                        >
+                        <path d="M0 0h24v24H0z" fill="none"></path>
+                        <path
+                            d="M5 13c0-5.088 2.903-9.436 7-11.182C16.097 3.564 19 7.912 19 13c0 .823-.076 1.626-.22 2.403l1.94 1.832a.5.5 0 0 1 .095.603l-2.495 4.575a.5.5 0 0 1-.793.114l-2.234-2.234a1 1 0 0 0-.707-.293H9.414a1 1 0 0 0-.707.293l-2.234 2.234a.5.5 0 0 1-.793-.114l-2.495-4.575a.5.5 0 0 1 .095-.603l1.94-1.832C5.077 14.626 5 13.823 5 13zm1.476 6.696l.817-.817A3 3 0 0 1 9.414 18h5.172a3 3 0 0 1 2.121.879l.817.817.982-1.8-1.1-1.04a2 2 0 0 1-.593-1.82c.124-.664.187-1.345.187-2.036 0-3.87-1.995-7.3-5-8.96C8.995 5.7 7 9.13 7 13c0 .691.063 1.372.187 2.037a2 2 0 0 1-.593 1.82l-1.1 1.039.982 1.8zM12 13a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"
+                            fill="currentColor"
+                        ></path>
+                        </svg>
+                        <span>Enviar mensaje</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <script src="Slider.js"></script>
+    <script src="chat.js"></script>
+</body>
+</html>

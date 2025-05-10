@@ -1,0 +1,250 @@
+body {
+    background-color: rgb(255, 255, 255);
+}
+
+.gold-hero {
+    margin: 0;
+    padding: 0;
+    width: 100%; 
+    min-height: 100vh; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+    background-image: url('https://chapmanfreeborn.aero/wp-content/uploads/2023/12/shutterstock_1774556099.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.tele {
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.718);
+    background-color: #000000b7;
+    width: 500PX;
+    height: 200PX;
+    border-radius: 8PX;
+    padding: 20PX;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tele:hover {
+    transform: translateY(-10px);
+}
+
+.ini {
+    font-size: 40px;
+    color: #fff;
+}
+
+.two {
+    font-size: 25px;
+    color: #fff;
+}
+
+.exp-container {
+    padding: 70px ;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.title-section {
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: #000;
+    position: relative;
+    font-family: 'Courgette', cursive;
+}
+
+.title-section::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: #c4a747;
+}
+
+.exp-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 -15px;
+}
+
+.exp-card {
+    width: 400px; /* Ancho fijo */
+    height: 400px; /* Altura fija */
+    margin: 15px;
+    background-color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.exp-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.exp-card-image {
+    width: 400px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.exp-card-content {
+    padding: 20px;
+}
+
+.exp-card-title {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #0c2340;
+    font-family: 'Courgette', cursive;
+}
+
+.exp-card-text {
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+
+/* Sección Membresía */
+/* Contenedor centrado */
+.membresia-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    padding: 60px;
+}
+
+/* Título */
+.title-section {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 40px;
+    position: relative;
+    padding: 60;
+    font-family: 'Courgette', cursive;
+    letter-spacing: 2px;
+}
+
+/* Línea decorativa dorada */
+.title-section::after {
+    content: "";
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background-color: #c4a747; /* dorado */
+    border-radius: 2px;
+}
+
+/* Contenido VIP */
+.vip-details {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px; 
+}
+
+/* Información de VIP */
+.vip-info {
+    flex: 1;
+    padding-right: 40px;
+}
+
+/* Título VIP */
+.vip-title {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #0c2340; 
+    font-family: 'Courgette', cursive;
+}
+
+/* Texto */
+.vip-text {
+    line-height: 1.8;
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+/* Lista de beneficios */
+.vip-benefit-list {
+    margin: 30px 0;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+/* Icono beneficios - dorado con sombra */
+.benefit-icon {
+    width: 30px;
+    height: 30px;
+    background-color: #0c2340;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    color: #c4a747;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Imagen de VIP con sombra para lujo */
+.vip-image {
+    flex: 1;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    margin-top: 20px;
+    transition: transform 0.3s ease
+}
+
+.vip-image:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Botón CTA con efecto brillo dorado y hover */
+.hp {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.membresia-cta {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #0c2340;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    font-family: 'Courgette', cursive;
+}
+
+/* Respuesta para dispositivo móvil */
+@media(max-width: 768px) {
+    .vip-details {
+        flex-direction: column;
+        align-items: center;
+    }
+    .vip-info {
+        padding-right: 0;
+    }
+}

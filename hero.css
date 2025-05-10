@@ -1,0 +1,15 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.hero {
+    width: 100%; 
+    min-height: 100vh; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+    background: url('https://images.squarespace-cdn.com/content/v1/5b3fe49df8370a3a890259e8/02da487f-064f-4110-ab7a-f8e222e4abd2/ParisatNight_SeineView_TheWeithouse.jpg') no-repeat; 
+    background-size: cover;
+}

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input[type="text"],
+        input[type="tel"],
+        select {
+            width: 96%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4ecdc4;
+        }
+        
+        h2 {
+            color: #4ecdc4;
+            border-bottom: 2px solid #4ecdc4;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        
+        .btn-submit {
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            width: 200px;
+        }
+        
+        .btn-submit:hover {
+            background-color: #ff5252;
+        }
+        
+        .info-precio {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <div class="container">
+            <h1>Formulario de Comida</h1>
+            <form>
+                <h2>Datos de entrega</h2>
+                
+                <div class="form-group">
+                    <label for="direccion">Nombre completo:</label>
+                    <input type="text" id="Nombre completo" name="direccion" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefono">Cedula:</label>
+                    <input type="tel" id="Cedula" name="telefono" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefono">teléfono:</label>
+                    <input type="tel" id="telefono" name="telefono" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefono">teléfono:</label>
+                    <input type="tel" id="telefono" name="telefono" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefono">teléfono:</label>
+                    <input type="tel" id="telefono" name="telefono" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="plan">Selección de plan:</label>
+                    <select id="plan" class="form-control" onchange="actualizarPrecio()">
+                        <option value="Gustov Gold" data-precio="$12.000.000">Gustov Gold</option>
+                        <option value="Bienertar Personal" data-precio="$6.500.000">Bienestar Personal</option>
+                        <option value="Plan Avanzado" data-precio="$8.000.000">Experiencias Gastronómicas</option>
+                        <option value="Plan Avanzado" data-precio="$9.000.000">Culturas Exclusivas</option>
+                        <option value="Plan Avanzado" data-precio="$4.000.000">Salones VIP en Aeropuertos</option>
+                        <option value="Plan Avanzado" data-precio="$6.000.000">Eventos Privados</option>
+                        <option value="Plan Avanzado" data-precio="$7.000.000">Traslados de Lujo</option>
+                        <option value="Plan Avanzado" data-precio="$4.200.000">Asistente Virtual de Viaje</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="precio">Precio:</label>
+                    <input type="text" id="precio" readonly value="$6.000.000" class="form-control">
+                </div>
+                
+                <script>
+                function actualizarPrecio() {
+                    var select = document.getElementById("plan");
+                    var precio = select.options[select.selectedIndex].getAttribute("data-precio");
+                    document.getElementById("precio").value = precio;
+                }
+                </script>
+                
+
+                <div class="form-group">
+                    <label for="telefono">Correo electrónico:</label>
+                    <input type="tel" id="telefono" name="Correo electrónico" required>
+                </div>
+                
+                <h2>Datos de pago</h2>
+
+                <div class="form-group">
+                    <label for="tarjeta">Método de pago:</label>
+                    <input type="text" id="Método de pago" name="tarjeta" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="tarjeta">Número de tarjeta:</label>
+                    <input type="text" id="tarjeta" name="tarjeta" required>
+                </div>
+                
+                <button type="submit" class="btn-submit">Realizar pedido</button>
+            </form>
+        </div>
+    </form>
+</body>
+</html>

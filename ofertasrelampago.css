@@ -1,0 +1,72 @@
+body {
+    background-color: rgb(242, 237, 237);
+    margin: 0;
+    padding: 0;
+}
+
+.titulo1 {
+    padding: 120px;
+    text-align: center;
+    color: #0a1f35;
+    position: relative;
+    padding-bottom: 15px;
+    font-family: 'Courgette', cursive;
+    font-size: 40px;
+}
+
+.titulo1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background-color: #0091ff;
+}
+
+.tituloo {
+    text-align: center;
+    color: #0a1f35;
+    padding-top: 50px;
+}
+
+.container {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    display: flex;
+}
+
+.cardss {
+    width: 420px;
+    height: 450px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 8px;
+    margin: 15px;
+    transition: all 0.3s ease;
+}
+
+.cardss:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.cancun {
+    width: 380px;
+    height: 230px;
+    padding: 20px;
+}
+
+.azul {
+    color: #0091ff;
+    padding: 20px;
+    margin-top: -20px;
+    font-size: 25px;
+}
+
+.pa {
+    padding: 20px;
+    font-size: 18px;
+    margin-top: -40px;
+}

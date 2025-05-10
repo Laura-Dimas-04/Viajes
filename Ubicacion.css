@@ -1,0 +1,35 @@
+.ubi {
+    color: #ffffff;
+    margin-top: 20px;
+    text-align: center;
+    position: relative;
+    padding-bottom: 15px;
+    text-transform: uppercase;
+    font-size: 30px
+}
+
+.ubi:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background-color: #0091ff;
+}
+
+.mapas {
+    width: 700px;
+    height: 500px;
+    justify-content: center;
+    border-radius: 8px;
+    margin-top: 50px;
+    display: flex;
+}
+
+.mundo {
+    color: #ffffff;
+    font-size: 40px;
+    text-align: center;
+}
