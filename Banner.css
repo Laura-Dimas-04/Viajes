@@ -1,13 +1,15 @@
-.Dos{  
+.Doss{  
     font-size: 60px;  
     margin: 0;  
     color: #ffffff;
+    font-family: 'Courgette', cursive;
 }  
 
-.uno {  
+.unoo {  
     font-size: 20px;  
     margin: 10px 0;  
     color: #ffffff;
+    font-family: 'Courgette', cursive;
 }  
 
 .btn {  

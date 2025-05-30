@@ -8,6 +8,7 @@
     text-align: center;
     margin-bottom: 50px;
     color: #fff;
+    font-family: 'Courgette', cursive;
 }
 
 .section-title h2 {
@@ -43,12 +44,14 @@
     font-weight: 600;
     margin-bottom: 25px;
     color: #0091ff;
+    font-family: 'Courgette', cursive;
     text-align: center;
 }
 
 .info-item {
     display: flex;
     align-items: center;
+    font-family: 'Courgette', cursive;
     margin-bottom: 20px;
 }
 
@@ -106,6 +109,7 @@
     flex: 1;
     min-width: 300px;
     background: #fff;
+    font-family: 'Courgette', cursive;
     border-radius: 15px;
     padding: 30px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);

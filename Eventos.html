@@ -1,40 +1,916 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salidas Gustov - Comunidad</title>
     <link rel="stylesheet" href="SalidasNav.css">
     <script src="https://kit.fontawesome.com/4243cdd291.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: black;
+
+            margin: 0;
+            padding: 0;
+        }
+
+        .gold-hero {
+            margin: 0;
+            padding: 0;
+            width: 100%; 
+            min-height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            background-image: url('https://www.vipealo.com/blog/wp-content/uploads/2022/09/christian-lue-7dEyTJ7-8os-unsplash.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .tele {
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.718);
+            background-color: #000000b7;
+            width: 500PX;
+            height: 200PX;
+            border-radius: 8PX;
+            padding: 20PX;
+            font-family: 'Courgette', cursive;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tele:hover {
+            transform: translateY(-10px);
+        }
+
+        .ini {
+            font-size: 40px;
+            color: #fff;
+        }
+
+        .two {
+            font-size: 25px;
+            color: #fff;
+        }
+        
+        /* CONTENIDO PRINCIPAL */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 30px;
+            max-width: 1300px;
+            margin: 30px auto;
+            padding: 5%;
+        }
+        
+        /* GRID DE 8 CARDS */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .card {
+            background: linear-gradient(135deg, var(--gris-oscuro) 0%, var(--gris-medio) 100%);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            border: 1px solid #333;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 145, 255, 0.3);
+        }
+        
+        .card-img {
+            height: 160px;
+            overflow: hidden;
+        }
+        
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .card:hover .card-img img {
+            transform: scale(1.05);
+        }
+        
+        .card-badge {
+            position: absolute;
+            color: #ffffff;
+            top: 15px;
+            right: 15px;
+            background: rgba(3, 72, 248, 0.834);
+            color: var(--azul);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .card-content {
+            padding: 20px;
+        }
+        
+        .card-date {
+            color: rgb(255, 255, 255);
+            font-size: 13px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .card-title {
+            color: rgb(255, 255, 255);
+            font-size: 18px;
+            margin: 0 0 12px 0;
+            line-height: 1.4;
+        }
+        
+        .card-description {
+            color: #ccc;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #333;
+        }
+        
+        .card-price {
+            font-weight: bold;
+            color: rgb(255, 255, 255);
+        }
+        
+        .card-button {
+            background: var(--azul);
+            color: rgb(255, 255, 255);
+            border: none;
+            border-radius: 20px;
+            padding: 6px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .card-button:hover {
+            background: var(--azul-oscuro);
+        }
+        
+        /* SIDEBAR DERECHA */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            position: relative;
+        }
+        
+        /* CALENDARIO COMPACTO */
+        .compact-calendar {
+            background: var(--gris-oscuro);
+            border-radius: 12px;
+            width: 500px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border: 1px solid #333;
+            max-width: 100%;
+            margin-left: 73%;
+        }
+        
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 45px;
+        }
+        
+        .calendar-month {
+            font-size: 16px;
+            font-weight: bold;
+            color: rgb(255, 255, 255);
+        }
+        
+        .calendar-nav {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .calendar-nav button {
+            background: var(--azul);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 26px;
+            height: 26px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .calendar-nav button:hover {
+            background: var(--azul-oscuro);
+        }
+        
+        .calendar-grid {
+            color: rgb(255, 255, 255);
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 35px;
+        }
+        
+        .calendar-day-header {
+            font-size: 12px;
+            text-align: center;
+            color: var(--azul);
+            padding: 5px 0;
+        }
+        
+        .calendar-day {
+            font-size: 13px;
+            text-align: center;
+            padding: 8px 0;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .calendar-day:hover {
+            background: #333;
+        }
+        
+        .calendar-day.active {
+            background: var(--azul);
+            color: white;
+            font-weight: bold;
+        }
+        
+        .calendar-day.today {
+            border: 1px solid var(--azul);
+        }
+        
+        .calendar-day.has-events:after {
+            content: '•';
+            color: var(--azul);
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 16px;
+            line-height: 0;
+        }
+        
+        /* CHATBOX (CON BOTÓN ABRIR/CERRAR) */
+        .chat-toggle {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: var(--azul);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            background-color: #0c2340;
+            z-index: 100;
+            border: none;
+            font-size: 24px;
+        }
+        
+        .chatbox {
+            position: fixed;
+            bottom: 100px;
+            left: 30px;
+            width: 350px;
+            background: var(--gris-oscuro);
+            border-radius: 12px;
+            background-color: #0c2340;
+            border: 1px solid #333;
+            overflow: hidden;
+            transform: translateY(20px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 99;
+        }
+        
+        .chatbox.active {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .chat-header {
+            background: var(--azul);
+            color: white;
+            padding: 15px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .chat-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .chat-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        
+        .chat-messages {
+            height: 300px;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .message {
+            max-width: 80%;
+            padding: 10px 15px;
+            border-radius: 18px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        .message.received {
+            align-self: flex-start;
+            background: #ffffff;
+            border-bottom-left-radius: 5px;
+        }
+        
+        .message.sent {
+            align-self: flex-end;
+            background: var(--azul);
+            border-bottom-right-radius: 5px;
+        }
+        
+        .message-time {
+            display: block;
+            font-size: 11px;
+            color: #ffffff;
+            margin-top: 4px;
+        }
+        
+        .chat-input {
+            display: flex;
+            padding: 15px;
+            border-top: 1px solid #333;
+            background: var(--gris-medio);
+        }
+        
+        .chat-input input {
+            flex-grow: 1;
+            background: #ffffff;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 15px;
+            color: rgb(0, 0, 0);
+            outline: none;
+        }
+        
+        .chat-input button {
+            background: var(--azul);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        /* SECCIÓN DE COMENTARIOS */
+        .reviews-section {
+            background: var(--gris-oscuro);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            border: 1px solid #333;
+            max-width: 300px;
+            margin-left: 80%;
+            margin-top: -40%;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: rgb(255, 255, 255);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-title i {
+            font-size: 24px;
+        }
+        
+        .reviews-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .review-card {
+            background: #252525;
+            border-radius: 10px;
+            padding: 15px;
+            border-left: 3px solid var(--azul);
+        }
+        
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .review-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .review-author {
+            font-weight: bold;
+            font-size: 15px;
+            color: rgb(255, 255, 255);
+        }
+        
+        .review-date {
+            color: #999;
+            font-size: 12px;
+            margin-top: 2px;
+        }
+        
+        .review-rating {
+            color: #ffc107;
+            font-size: 14px;
+            margin-left: auto;
+        }
+        
+        .review-content {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #ddd;
+        }
+        
+        .view-all {
+            text-align: center;
+            margin-top: 15px;
+        }
+        
+        .view-all a {
+            color: var(--azul);
+            text-decoration: none;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.2s;
+        }
+        
+        .view-all a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
+    <!-- NAVBAR (MANTENIENDO TU CÓDIGO EXISTENTE) -->
     <nav>
         <div class="navbar">
-            <a href="#inicios">  
+            <a href="index.html">  
                 <img class="Logotipo" src="imagenes/Logo.png" alt="Logo">  
-            </a>
+            </a>  
             <div>
-                <h1 class="logo">Eventos Gustov</h1>
+                <h1 class="logo">Salidas Gustov</h1>
             </div>
             <div class="menu">
                 <ul>
                     <li>  
                         <a href="index.html">  
-                            <i class="fa-solid fa-house-chimney"></i>Inicio  
+                            <i class="fa-solid fa-arrow-right-arrow-left"></i>Volver
                         </a>  
                     </li> 
                     <li>  
-                        <a href="#tourss">
-                            <i class="fa-solid fa-dragon"></i>Eventos
+                        <a href="#opennn">  
+                            <i class="fa-solid fa-play"></i>Inicio  
                         </a>  
-                    </li>  
-                    <li>
-                        <a href="#contactos">
-                            <i class="fa-sharp fa-solid fa-phone"></i>Contacto</a>
                     </li>
+                    <li>
+                        <a href="#noticias">
+                            <i class="fa-solid fa-calendar-check"></i>Noticias
+                        </a>
+                    </li> 
                 </ul>
             </div>
         </div>
     </nav>
+
+    <section id="opennn" class="gold-hero">
+        <div class="tele">  
+            <h1 class="ini">Vive lo Inolvidable</h1>  
+            <p class="two">Descubre experiencias que marcarán la diferencia en tu vida.</p>  
+        </div>  
+    </section>
+    
+
+    <section id="noticias">
+        <!-- CONTENIDO PRINCIPAL -->
+        <div class="main-content">
+            <!-- SECCIÓN DE 8 CARDS -->
+            <div class="cards-container">
+                <!-- Card 1 -->
+                <div class="card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Evento en Bogotá">
+                        <span class="card-badge">OFERTA</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-date"><i class="far fa-calendar-alt"></i> 27 MAY 2025</div>
+                        <h3 class="card-title">Fiesta en la Terraza - Bogotá</h3>
+                        <p class="card-description">Noche exclusiva con DJ internacional y barra libre de cócteles premium.</p>
+                        <div class="card-footer">
+                            <span class="card-price">$120.000</span>
+                            <button class="card-button">Reservar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Concierto">
+                        <span class="card-badge">NUEVO</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-date"><i class="far fa-calendar-alt"></i> 29 MAY 2025</div>
+                        <h3 class="card-title">Concierto al Aire Libre</h3>
+                        <p class="card-description">Los mejores artistas nacionales en un evento único bajo las estrellas.</p>
+                        <div class="card-footer">
+                            <span class="card-price">$85.000</span>
+                            <button class="card-button">Reservar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Cena Gourmet">
+                        <span class="card-badge">EXCLUSIVO</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-date"><i class="far fa-calendar-alt"></i> 30 MAY 2025</div>
+                        <h3 class="card-title">Cena con Chef Estrella Michelin</h3>
+                        <p class="card-description">Menú degustación de 7 pasos con maridaje de vinos premium.</p>
+                        <div class="card-footer">
+                            <span class="card-price">$250.000</span>
+                            <button class="card-button">Reservar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 4 -->
+                <div class="card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1513828583688-c52646db42da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Tour Cultural">
+                        <span class="card-badge">POPULAR</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-date"><i class="far fa-calendar-alt"></i> 01 JUN 2025</div>
+                        <h3 class="card-title">Tour Histórico por la Candelaria</h3>
+                        <p class="card-description">Descubre los secretos mejor guardados del centro histórico de Bogotá.</p>
+                        <div class="card-footer">
+                            <span class="card-price">$65.000</span>
+                            <button class="card-button">Reservar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 5 -->
+                <div class="card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Escape Room">
+                        <span class="card-badge">LIMITADO</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-date"><i class="far fa-calendar-alt"></i> 03 JUN 2025</div>
+                        <h3 class="card-title">Escape Room: Misterio en el Museo</h3>
+                        <p class="card-description">Nueva experiencia interactiva para grupos de 4-6 personas.</p>
+                        <div class="card-footer">
+                            <span class="card-price">$90.000</span>
+                            <button class="card-button">Reservar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 6 -->
+                <div class="card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Taller Mixología">
+                        <span class="card-badge">TALLER</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-date"><i class="far fa-calendar-alt"></i> 05 JUN 2025</div>
+                        <h3 class="card-title">Taller de Mixología Premium</h3>
+                        <p class="card-description">Aprende a preparar 5 cócteles clásicos con bartenders expertos.</p>
+                        <div class="card-footer">
+                            <span class="card-price">$75.000</span>
+                            <button class="card-button">Reservar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 7 -->
+                <div class="card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Brunch Dominical">
+                        <span class="card-badge">DOMINGO</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-date"><i class="far fa-calendar-alt"></i> 07 JUN 2025</div>
+                        <h3 class="card-title">Brunch con Música en Vivo</h3>
+                        <p class="card-description">Menú buffet internacional acompañado de jazz acústico.</p>
+                        <div class="card-footer">
+                            <span class="card-price">$55.000</span>
+                            <button class="card-button">Reservar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 8 -->
+                <div class="card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Noche de Cine">
+                        <span class="card-badge">PREVENTA</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-date"><i class="far fa-calendar-alt"></i> 08 JUN 2025</div>
+                        <h3 class="card-title">Cine bajo las Estrellas</h3>
+                        <p class="card-description">Proyección de clásicos del cine en pantalla gigante al aire libre.</p>
+                        <div class="card-footer">
+                            <span class="card-price">$40.000</span>
+                            <button class="card-button">Reservar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SIDEBAR DERECHA -->
+            <div class="sidebar">
+                <!-- CALENDARIO COMPACTO -->
+                <div class="compact-calendar">
+                    <div class="calendar-header">
+                        <div class="calendar-month">MAYO 2025</div>
+                        <div class="calendar-nav">
+                            <button id="prev-month"><i class="fas fa-chevron-left"></i></button>
+                            <button id="next-month"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="calendar-grid">
+                        <div class="calendar-day-header">L</div>
+                        <div class="calendar-day-header">M</div>
+                        <div class="calendar-day-header">M</div>
+                        <div class="calendar-day-header">J</div>
+                        <div class="calendar-day-header">V</div>
+                        <div class="calendar-day-header">S</div>
+                        <div class="calendar-day-header">D</div>
+                        
+                        <!-- Días del mes (ejemplo) -->
+                        <div class="calendar-day">28</div>
+                        <div class="calendar-day">29</div>
+                        <div class="calendar-day">30</div>
+                        <div class="calendar-day">1</div>
+                        <div class="calendar-day">2</div>
+                        <div class="calendar-day">3</div>
+                        <div class="calendar-day">4</div>
+                        
+                        <div class="calendar-day">5</div>
+                        <div class="calendar-day">6</div>
+                        <div class="calendar-day">7</div>
+                        <div class="calendar-day">8</div>
+                        <div class="calendar-day">9</div>
+                        <div class="calendar-day">10</div>
+                        <div class="calendar-day">11</div>
+                        
+                        <div class="calendar-day">12</div>
+                        <div class="calendar-day">13</div>
+                        <div class="calendar-day">14</div>
+                        <div class="calendar-day">15</div>
+                        <div class="calendar-day has-events">16</div>
+                        <div class="calendar-day">17</div>
+                        <div class="calendar-day">18</div>
+                        
+                        <div class="calendar-day">19</div>
+                        <div class="calendar-day">20</div>
+                        <div class="calendar-day has-events">21</div>
+                        <div class="calendar-day has-events">22</div>
+                        <div class="calendar-day">23</div>
+                        <div class="calendar-day">24</div>
+                        <div class="calendar-day">25</div>
+                        
+                        <div class="calendar-day">26</div>
+                        <div class="calendar-day active today">27</div>
+                        <div class="calendar-day has-events">28</div>
+                        <div class="calendar-day has-events">29</div>
+                        <div class="calendar-day">30</div>
+                        <div class="calendar-day">31</div>
+                        <div class="calendar-day">1</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="reviews-section">
+                    <h3 class="section-title"><i class="fas fa-star"></i> Opiniones de Clientes</h3>
+                    
+                    <div class="reviews-container">
+                        <!-- Review 1 -->
+                        <div class="review-card">
+                            <div class="review-header">
+                                <img src="https://cloudfront-us-east-1.images.arcpublishing.com/vanguardiaeluniversal/HMPPPMZ5BVALREZ5FOWNDN7MMI.jpg" class="review-avatar">
+                                <div>
+                                    <div class="review-author">María Fernanda</div>
+                                    <div class="review-date">15 MAY 2025</div>
+                                </div>
+                                <div class="review-rating">★★★★★</div>
+                            </div>
+                            <p class="review-content">"La fiesta en la terraza fue increíble! El servicio impecable y la música espectacular. Definitivamente volveré con mis amigos."</p>
+                        </div>
+                        
+                        <!-- Review 2 -->
+                        <div class="review-card">
+                            <div class="review-header">
+                                <img src="https://www.javerianacali.edu.co/sites/default/files/styles/image_1100x700/public/2024-03/Carlos%20Andres%20Echeverry_1.jpg.webp?itok=cDW7h4cp" class="review-avatar">
+                                <div>
+                                    <div class="review-author">Carlos Andrés</div>
+                                    <div class="review-date">10 MAY 2025</div>
+                                </div>
+                                <div class="review-rating">★★★★☆</div>
+                            </div>
+                            <p class="review-content">"El tour por La Candelaria superó mis expectativas. Nuestro guía conocía cada detalle histórico. Solo faltó más tiempo para preguntas."</p>
+                        </div>
+                        
+                        <!-- Review 3 -->
+                        <div class="review-card">
+                            <div class="review-header">
+                                <img src="https://images.milenio.com/r0PkRutzmbMSPeio0cGx460i5fU=/345x194/uploads/media/2021/06/09/laura-ensena-vivo-sudor-axilas_0_84_1080_672.jpg" class="review-avatar">
+                                <div>
+                                    <div class="review-author">Laura G.</div>
+                                    <div class="review-date">05 MAY 2025</div>
+                                </div>
+                                <div class="review-rating">★★★★★</div>
+                            </div>
+                            <p class="review-content">"La cena con el chef Michelin fue una experiencia única. Cada plato era una obra de arte. Vale cada peso invertido!"</p>
+                        </div>
+                    </div>
+                    
+                    <div class="view-all">
+                        <a href="#">Ver todas las opiniones <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CHATBOX (TOGGLE) -->
+        <button class="chat-toggle" id="chatToggle">
+            <i class="fas fa-comment-dots"></i>
+        </button>
+        
+        <div class="chatbox" id="chatbox">
+            <div class="chat-header">
+                <div class="chat-title">
+                    <i class="fas fa-comments"></i>
+                    <span>Asistente Virtual</span>
+                </div>
+                <button class="chat-close" id="chatClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="chat-messages">
+                <div class="message received">
+                    ¡Hola! Soy Gustov, tu asistente de viajes. ¿En qué puedo ayudarte hoy?
+                    <span class="message-time">Hoy 03:59</span>
+                </div>
+                
+                <div class="message received">
+                    Puedes preguntarme sobre eventos, reservas o cualquier duda que tengas.
+                    <span class="message-time">Hoy 04:00</span>
+                </div>
+            </div>
+            
+            <div class="chat-input">
+                <input type="text" placeholder="Escribe tu mensaje..." id="chatInput">
+                <button id="sendMessage">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        // TOGGLE CHATBOX
+        const chatToggle = document.getElementById('chatToggle');
+        const chatClose = document.getElementById('chatClose');
+        const chatbox = document.getElementById('chatbox');
+        
+        chatToggle.addEventListener('click', () => {
+            chatbox.classList.toggle('active');
+        });
+        
+        chatClose.addEventListener('click', () => {
+            chatbox.classList.remove('active');
+        });
+        
+        // ENVÍO DE MENSAJES
+        const chatInput = document.getElementById('chatInput');
+        const sendMessage = document.getElementById('sendMessage');
+        const messagesContainer = document.querySelector('.chat-messages');
+        
+        sendMessage.addEventListener('click', sendChatMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if(e.key === 'Enter') sendChatMessage();
+        });
+        
+        function sendChatMessage() {
+            const message = chatInput.value.trim();
+            if(message) {
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('message', 'sent');
+                messageElement.innerHTML = `
+                    ${message}
+                    <span class="message-time">Hoy ${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+                `;
+                messagesContainer.appendChild(messageElement);
+                chatInput.value = '';
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                
+                // Respuesta automática después de 1 segundo
+                setTimeout(() => {
+                    const replyElement = document.createElement('div');
+                    replyElement.classList.add('message', 'received');
+                    replyElement.innerHTML = `
+                        Gracias por tu mensaje. Un agente te responderá pronto.
+                        <span class="message-time">Hoy ${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+                    `;
+                    messagesContainer.appendChild(replyElement);
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                }, 1000);
+            }
+        }
+        
+        // INTERACCIÓN DEL CALENDARIO
+        document.getElementById('prev-month').addEventListener('click', () => {
+            console.log('Ir al mes anterior');
+            // Lógica para cambiar de mes
+        });
+        
+        document.getElementById('next-month').addEventListener('click', () => {
+            console.log('Ir al mes siguiente');
+            // Lógica para cambiar de mes
+        });
+        
+        // Selección de día en el calendario
+        const days = document.querySelectorAll('.calendar-day');
+        days.forEach(day => {
+            day.addEventListener('click', function() {
+                days.forEach(d => d.classList.remove('active'));
+                this.classList.add('active');
+                // Aquí podrías filtrar las cards por fecha seleccionada
+            });
+        });
+    </script>
 </body>
 </html>

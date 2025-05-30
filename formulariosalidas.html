@@ -1,160 +1,595 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <title>Viajes Gustov - ALHIRA</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0c2340 0%, #34495e 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
         .container {
             max-width: 600px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .form-group {
-            margin-bottom: 15px;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        
-        input[type="text"],
-        input[type="tel"],
-        select {
-            width: 96%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 16px;
-        }
-        
-        input[type="radio"] {
-            margin-right: 5px;
+            width: 100%;
         }
 
-        h1 {
-            text-align: center;
-            color: #4ecdc4;
+        .form-container, .loading-container, .ticket-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: none;
         }
-        
-        h2 {
-            color: #4ecdc4;
-            border-bottom: 2px solid #4ecdc4;
-            padding-bottom: 5px;
-            margin-top: 30px;
-        }
-        
-        .btn-submit {
-            background-color: #ff6b6b;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            font-size: 16px;
-            border-radius: 4px;
-            cursor: pointer;
+
+        .form-container.active, .loading-container.active, .ticket-container.active {
             display: block;
-            margin: 20px auto;
-            width: 200px;
+            animation: fadeIn 0.5s ease-out;
         }
-        
-        .btn-submit:hover {
-            background-color: #ff5252;
+
+        .header {
+            background: linear-gradient(135deg, #34495e, #0c2340);
+            color: white;
+            padding: 30px;
+            text-align: center;
         }
-        
-        .info-precio {
-            background-color: #f9f9f9;
-            padding: 10px;
-            border-radius: 4px;
-            margin-bottom: 5px;
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+        }
+
+        .form-content {
+            padding: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1e8ed;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Loading Styles */
+        .loading-content {
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 30px;
+        }
+
+        .loading-text {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .loading-subtext {
+            color: #666;
+        }
+
+        /* Ticket Styles */
+        .ticket {
+            background: #f8f9fa;
+            border: 3px solid #34495e;
+            border-radius: 15px;
+            margin: 20px;
+            overflow: hidden;
+        }
+
+        .ticket-header {
+            background: white;
+            padding: 20px;
+            border-bottom: 3px solid #34495e;
+            text-align: center;
+        }
+
+        .ticket-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #34495e;
+            margin-bottom: 15px;
+        }
+
+        .ticket-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .agency-section {
+            background: white;
+            padding: 25px;
+            border-bottom: 3px solid #34495e;
+        }
+
+        .agency-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #34495e;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .agency-details {
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .client-section {
+            background: white;
+            padding: 25px;
+            border-bottom: 3px solid #34495e;
+        }
+
+        .client-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #34495e;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .details-section {
+            background: #34495e;
+            color: white;
+            padding: 25px;
+        }
+
+        .details-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .details-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .details-table th, .details-table td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .details-table th {
+            background: rgba(255,255,255,0.1);
+            font-weight: bold;
+        }
+
+        .total-section {
+            background: white;
+            padding: 25px;
+            text-align: center;
+            border-bottom: 3px solid #34495e;
+        }
+
+        .total-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #34495e;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .total-amount {
+            font-size: 24px;
+            font-weight: bold;
+            color: #27ae60;
+            margin-bottom: 10px;
+        }
+
+        .payment-method {
+            color: #666;
+        }
+
+        .footer-section {
+            background: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .slogan {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .print-btn {
+            background: #34495e;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .ticket {
+                margin: 10px;
+            }
+            
+            .ticket-info {
+                flex-direction: column;
+                gap: 5px;
+            }
         }
     </style>
 </head>
 <body>
-    <form>
-        <div class="container">
-            <h1>Formulario de Comida</h1>
-            <form>
-                <h2>Datos de entrega</h2>
-                
-                <div class="form-group">
-                    <label for="direccion">Nombre completo:</label>
-                    <input type="text" id="Nombre completo" name="direccion" required>
-                </div>
+    <div class="container">
+        <!-- Formulario de Compra -->
+        <div class="form-container active" id="formContainer">
+            <div class="header">
+                <h1>🧳 Viajes Gustov</h1>
+                <p>Completa tu información para confirmar la compra</p>
+            </div>
+            <div class="form-content">
+                <form id="purchaseForm">
+                    <div class="form-group">
+                        <label for="fullName">Nombre Completo *</label>
+                        <input type="text" id="fullName" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="document">Documento *</label>
+                            <input type="text" id="document" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Teléfono *</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="destination">Destino</label>
+                            <select id="destination">
+                                <option value="Tokyo" data-price="15000000">Tokyo - $15.000.000</option>
+                                <option value="Buenos Aires" data-price="10000000">Buenos Aires - $10.000.000</option>
+                                <option value="Rio de Janeiro" data-price="8000000">Rio de Janeiro - $8.000.000</option>
+                                <option value="Madrid" data-price="12000000">Madrid - $12.000.000</option>
+                                <option value="Grecia" data-price="14000000">Grecia - $14.000.000</option>
+                                <option value="Lucerna" data-price="9000000">Lucerna - $9.000.000</option>
+                                <option value="Portugal" data-price="11000000">Portugal - $11.000.000</option>
+                                <option value="Dubai" data-price="16000000">Dubai - $16.000.000</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="departure">Fecha de Salida</label>
+                            <input type="date" id="departure" value="2025-06-10">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="persons">Número de Personas</label>
+                            <select id="persons">
+                                <option value="1">1 Persona</option>
+                                <option value="2" selected>2 Personas</option>
+                                <option value="3">3 Personas</option>
+                                <option value="4">4 Personas</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="transport">Transporte</label>
+                            <select id="transport">
+                                <option value="Avión + Local" data-price="3000000" selected>Avión + Local - $3.000.000</option>
+                                <option value="Bus + Local" data-price="1500000">Bus + Local - $1.500.000</option>
+                                <option value="Terrestre" data-price="1000000">Terrestre - $1.000.000</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="accommodation">Hospedaje</label>
+                        <select id="accommodation">
+                            <option value="Arena de Plata" data-price="2000000">Arena de Plata - $2.000.000</option>
+                            <option value="Encanto del Caribe" data-price="2500000">Encanto del Caribe - $2.500.000</option>
+                            <option value="Villa Zafiro" data-price="3000000">Villa Zafiro - $3.000.000</option>
+                            <option value="Cielo Azul" data-price="3500000">Cielo Azul - $3.500.000</option>
+                            <option value="Jardines en Hawaii" data-price="4000000">Jardines en Hawaii - $4.000.000</option>
+                            <option value="Polinesia Francesa" data-price="4500000">Polinesia Francesa - $4.500.000</option>
+                            <option value="Bahía Serena" data-price="5000000">Bahía Serena - $5.000.000</option>
+                            <option value="Horizonte de Jade" data-price="5500000">Horizonte de Jade - $5.500.000</option>
+                        </select>
+                    </div>
 
-                <div class="form-group">
-                    <label for="telefono">Cedula:</label>
-                    <input type="tel" id="Cedula" name="telefono" required>
-                </div>
+                    <div class="form-group">
+                        <label for="packages">Paquetes</label>
+                        <select id="packages">
+                            <option value="VIP Gustov Gold" data-price="5000000">VIP Gustov Gold - $5.000.000</option>
+                            <option value="Bienestar Personal" data-price="4000000">Bienestar Personal - $4.000.000</option>
+                            <option value="Experiencias Gastronómicas" data-price="3000000">Experiencias Gastronómicas - $3.000.000</option>
+                            <option value="Culturas Exclusivas" data-price="3500000">Culturas Exclusivas - $3.500.000</option>
+                            <option value="Salones VIP" data-price="2500000">Salones VIP - $2.500.000</option>
+                            <option value="Eventos Privados" data-price="6000000">Eventos Privados - $6.000.000</option>
+                            <option value="Traslados de Lujo" data-price="7000000">Traslados de Lujo - $7.000.000</option>
+                            <option value="Asistente de Viajes" data-price="2000000">Asistente de Viajes - $2.000.000</option>
+                        </select>
+                    </div>
 
-                <div class="form-group">
-                    <label for="telefono">teléfono:</label>
-                    <input type="tel" id="telefono" name="telefono" required>
-                </div>
+                    <div class="form-group">
+                        <label for="excursions">Excursiones (Todo incluido)</label>
+                        <select id="excursions">
+                            <option value="Excursión 1" data-price="1000000">Excursión 1 - $1.000.000</option>
+                            <option value="Excursión 2" data-price="1500000">Excursión 2 - $1.500.000</option>
+                        </select>
+                    </div>
 
-                <div class="form-group">
-                    <label for="telefono">teléfono:</label>
-                    <input type="tel" id="telefono" name="telefono" required>
-                </div>
+                    <div class="form-group">
+                        <label for="coupleFlights">Vuelos en Pareja (Todo incluido)</label>
+                        <select id="coupleFlights">
+                            <option value="Vuelo 1" data-price="5000000">Vuelo 1 - $5.000.000</option>
+                            <option value="Vuelo 2" data-price="6000000">Vuelo 2 - $6.000.000</option>
+                        </select>
+                    </div>
 
-                <div class="form-group">
-                    <label for="telefono">teléfono:</label>
-                    <input type="tel" id="telefono" name="telefono" required>
-                </div>
+                    <div class="form-group">
+                        <label for="tourTournament">Torneo Turístico (Todo incluido)</label>
+                        <select id="tourTournament">
+                            <option value="Torneo 1" data-price="2000000">Torneo 1 - $2.000.000</option>
+                            <option value="Torneo 2" data-price="2500000">Torneo 2 - $2.500.000</option>
+                        </select>
+                    </div>
 
-                <div class="form-group">
-                    <label for="plan">Selección de plan:</label>
-                    <select id="plan" class="form-control" onchange="actualizarPrecio()">
-                        <option value="Gustov Gold" data-precio="$12.000.000">Gustov Gold</option>
-                        <option value="Bienertar Personal" data-precio="$6.500.000">Bienestar Personal</option>
-                        <option value="Plan Avanzado" data-precio="$8.000.000">Experiencias Gastronómicas</option>
-                        <option value="Plan Avanzado" data-precio="$9.000.000">Culturas Exclusivas</option>
-                        <option value="Plan Avanzado" data-precio="$4.000.000">Salones VIP en Aeropuertos</option>
-                        <option value="Plan Avanzado" data-precio="$6.000.000">Eventos Privados</option>
-                        <option value="Plan Avanzado" data-precio="$7.000.000">Traslados de Lujo</option>
-                        <option value="Plan Avanzado" data-precio="$4.200.000">Asistente Virtual de Viaje</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="precio">Precio:</label>
-                    <input type="text" id="precio" readonly value="$6.000.000" class="form-control">
-                </div>
-                
-                <script>
-                function actualizarPrecio() {
-                    var select = document.getElementById("plan");
-                    var precio = select.options[select.selectedIndex].getAttribute("data-precio");
-                    document.getElementById("precio").value = precio;
-                }
-                </script>
-                
-
-                <div class="form-group">
-                    <label for="telefono">Correo electrónico:</label>
-                    <input type="tel" id="telefono" name="Correo electrónico" required>
-                </div>
-                
-                <h2>Datos de pago</h2>
-
-                <div class="form-group">
-                    <label for="tarjeta">Método de pago:</label>
-                    <input type="text" id="Método de pago" name="tarjeta" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="tarjeta">Número de tarjeta:</label>
-                    <input type="text" id="tarjeta" name="tarjeta" required>
-                </div>
-                
-                <button type="submit" class="btn-submit">Realizar pedido</button>
-            </form>
+                    <div class="form-group">
+                        <label for="carRental">Alquiler de Autos</label>
+                        <select id="carRental">
+                            <option value="Honda CR-V" data-price="3000000">Honda CR-V - $3.000.000</option>
+                            <option value="Mercedes-Benz Clase S" data-price="10000000">Mercedes-Benz Clase S - $10.000.000</option>
+                            <option value="Chevrolet Onix" data-price="1500000">Chevrolet Onix - $1.500.000</option>
+                            <option value="Renault Duster" data-price="2000000">Renault Duster - $2.000.000</option>
+                            <option value="Audi R8 Supra" data-price="12000000">Audi R8 Supra - $12.000.000</option>
+                            <option value="Subaru Forester" data-price="4000000">Subaru Forester - $4.000.000</option>
+                            <option value="Mazda CX-5" data-price="3500000">Mazda CX-5 - $3.500.000</option>
+                            <option value="Peugeot 3008" data-price="5000000">Peugeot 3008 - $5.000.000</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="payment">Forma de Pago</label>
+                        <select id="payment">
+                            <option value="Transferencia Bancaria" selected>Transferencia Bancaria</option>
+                            <option value="Tarjeta de Crédito">Tarjeta de Crédito</option>
+                            <option value="Efectivo">Efectivo</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn">Confirmar Compra - <span id="totalPrice">$2.500.000</span> COP</button>
+                </form>
+            </div>
         </div>
-    </form>
+
+        <!-- Pantalla de Carga -->
+        <div class="loading-container" id="loadingContainer">
+            <div class="loading-content">
+                <div class="spinner"></div>
+                <div class="loading-text">Procesando tu compra...</div>
+                <div class="loading-subtext">Por favor espera mientras confirmamos tu reserva</div>
+            </div>
+        </div>
+
+        <!-- Ticket de Compra -->
+        <div class="ticket-container" id="ticketContainer">
+            <div class="ticket">
+                <div class="ticket-header">
+                    <div class="ticket-title">🎫 Ticket de Compra</div>
+                    <div class="ticket-info">
+                        <span>N° de Ticket: <span id="ticketNumber"></span></span>
+                        <span>Fecha: <span id="ticketDate"></span></span>
+                    </div>
+                </div>
+
+                <div class="agency-section">
+                    <div class="agency-title">🧳 ALHIRA Agencia de Viajes</div>
+                    <div class="agency-details">
+                        Cra 133 Calle 2, Edificio ALHIRA<br>
+                        Lérida - Tolima, Colombia<br>
+                        alhira719@gmail.com<br>
+                        313 123 4567
+                    </div>
+                </div>
+
+                <div class="client-section">
+                    <div class="client-title">👤 Información del Cliente</div>
+                    <div id="clientInfo"></div>
+                </div>
+
+                <div class="details-section">
+                    <div class="details-title">✈️ Detalles del Paquete</div>
+                    <table class="details-table">
+                        <tr>
+                            <th>Destino</th>
+                            <th>Salida</th>
+                            <th>Personas</th>
+                            <th>Transporte</th>
+                        </tr>
+                        <tr id="tripDetails">
+                            <!-- Se llenará con JavaScript -->
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="total-section">
+                    <div class="total-title">💰 Total Pagado</div>
+                    <div class="total-amount">$ 2.500.000 COP</div>
+                    <div class="payment-method">Forma de pago: <span id="paymentMethod"></span></div>
+                </div>
+
+                <div class="footer-section">
+                    <div class="slogan">"Viaja con confianza. Vive la experiencia ALHIRA."</div>
+                    <button class="print-btn" onclick="window.print()">🖨️ Imprimir Ticket</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Generar número de ticket aleatorio
+        function generateTicketNumber() {
+            return 'ALH-' + String(Math.floor(Math.random() * 900000) + 100000).padStart(6, '0');
+        }
+
+        // Obtener fecha actual
+        function getCurrentDate() {
+            return new Date().toLocaleDateString('es-CO');
+        }
+
+        // Manejar envío del formulario
+        document.getElementById('purchaseForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Ocultar formulario y mostrar carga
+            document.getElementById('formContainer').classList.remove('active');
+            document.getElementById('loadingContainer').classList.add('active');
+            
+            // Simular carga por 3 segundos
+            setTimeout(() => {
+                // Obtener datos del formulario
+                const formData = {
+                    fullName: document.getElementById('fullName').value,
+                    document: document.getElementById('document').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    destination: document.getElementById('destination').value,
+                    departure: document.getElementById('departure').value,
+                    persons: document.getElementById('persons').value,
+                    transport: document.getElementById('transport').value,
+                    payment: document.getElementById('payment').value
+                };
+                
+                // Llenar el ticket con los datos
+                document.getElementById('ticketNumber').textContent = generateTicketNumber();
+                document.getElementById('ticketDate').textContent = getCurrentDate();
+                
+                document.getElementById('clientInfo').innerHTML = `
+                    Nombre: ${formData.fullName} &nbsp;&nbsp;&nbsp; Documento: ${formData.document}<br>
+                    Email: ${formData.email} &nbsp;&nbsp;&nbsp; Teléfono: ${formData.phone}
+                `;
+                
+                document.getElementById('tripDetails').innerHTML = `
+                    <td>${formData.destination}</td>
+                    <td>${new Date(formData.departure).toLocaleDateString('es-CO')}</td>
+                    <td>${formData.persons}</td>
+                    <td>${formData.transport}</td>
+                `;
+                
+                document.getElementById('paymentMethod').textContent = formData.payment;
+                
+                // Ocultar carga y mostrar ticket
+                document.getElementById('loadingContainer').classList.remove('active');
+                document.getElementById('ticketContainer').classList.add('active');
+                
+            }, 3000);
+        });
+    </script>
 </body>
 </html>

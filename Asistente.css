@@ -1,12 +1,4 @@
-body {
-    background-color: rgb(242, 237, 237);
-}
-
-.tours-container {
-    padding: 20px;
-}
-
-.tours-hero {
+.eventos-hero {
     margin: 0;
     padding: 0;
     width: 100%; 
@@ -15,136 +7,106 @@ body {
     align-items: center; 
     justify-content: center; 
     text-align: center; 
-    background: url('https://www.watg.com/wp-content/uploads/2008/06/034063_N10_highres-scaled.jpg') no-repeat; 
+    background: url('https://static.comunicae.com/photos/notas/1192902/1517177022_fiestas_privadas.jpg') no-repeat; 
     background-size: cover;
 }
 
-.Tours{
-    padding: 60px;
-    text-align: center;
-    font-size: 40px;
-    color: #0a1f35;
-    position: relative;
-    padding-bottom: 15px;
-    text-transform: uppercase;
+.tele {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.718);
+    background-color: #000000b7;
+    width: 500PX;
+    height: 200PX;
+    border-radius: 8PX;
+    padding: 20PX;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.Tours::after {
-    content: '';
+.tele:hover {
+    transform: translateY(-10px);
+}
+
+.mun {
+    font-size: 41px;
+    color: #ffffff;
+}
+
+.mund {
+    font-size: 25px;
+    color: #ffffff;
+}
+
+.exp-container {
+    padding: 70px ;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.title-section {
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: #000;
+    position: relative;
+    font-family: 'Courgette', cursive;
+}
+
+.title-section::after {
+    content: "";
     position: absolute;
-    bottom: 0;
+    bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
-    width: 100px;
+    width: 80px;
     height: 3px;
-    background-color: #0091ff;
+    background-color: #c4a747;
 }
 
-.contenedor {
+.exp-cards {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
-    padding-top: 60px;
+    justify-content: space-between;
+    margin: 0 -15px;
 }
 
-.cards1 {
-    width: 420px;
-    height: 500px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    transition: all 0.3s ease;
+.exp-card {
+    width: 400px; /* Ancho fijo */
+    height: 400px; /* Altura fija */
     margin: 15px;
+    background-color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.cards1:hover {
+.exp-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
-.imagen {
-    width: 380px;
-    height: 230px;
+.exp-card-image {
+    width: 400px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.exp-card-content {
     padding: 20px;
 }
 
-.titulo2 {
-    text-align: center;
-    color: #0091ff;
+.exp-card-title {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #0c2340;
     font-family: 'Courgette', cursive;
-    padding: 20px;
-    margin-top: -20px;
 }
 
-.parrafo {
-    padding: 20px;
-    margin-top: -40px;
-    font-size: 18px;
-}
-/* Si todos los botones están en un mismo contenedor, por ejemplo un div que ya tienes sin clase */
-
-.boton-container {
-  display: flex;
-  justify-content: center; /* Centra los botones */
-  align-items: center;
-  gap: 80px; /* Espacio entre botones */
-  margin-top: 30px;
-  font-family: 'Courgette', cursive;
+.exp-card-text {
+    line-height: 1.6;
+    margin-bottom: 20px;
 }
 
-.boton-container a {
-  text-decoration: none;
-}
 
-.boton-container button {
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  min-width: 140px;
-  padding: 12px 17px;
-  cursor: pointer;
-  border: 0;
-  border-radius: 7px;
-  font-family: inherit;
-  font-style: italic;
-  font-weight: bold;
-  background: radial-gradient(
-    ellipse at bottom,
-    rgba(71, 81, 92, 1) 0%,
-    rgba(11, 21, 30, 1) 45%
-  );
-  color: rgba(255, 255, 255, 0.66);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-  position: relative;
-  transition: all 0.3s ease;
-}
-
-.boton-container button::before {
-  content: "";
-  width: 70%;
-  height: 1px;
-  position: absolute;
-  bottom: 0;
-  left: 15%;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 1) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  opacity: 0.2;
-  pointer-events: none;
-  transition: all 0.3s ease;
-}
-
-.boton-container button:hover {
-  color: white;
-  transform: scale(1.1) translateY(-3px);
-}
-
-.boton-container button:hover::before {
-  opacity: 1;
-}
-
+/* Sección Membresía */
 .membresia-container {
     max-width: 1200px;
     margin: 0 auto;
